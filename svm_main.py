@@ -6,15 +6,40 @@
 
 import pandas as pd
 import numpy as np
-import scikit as sc
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
 
-def csv_import():
-    '''
-        A function designed to import a .csv file
-    '''
-    
-def excel_import():
-    '''
-        A function designed to import an .xlsx file
-    '''
-    
+
+# --------------------------- PHASE 1: DATA IMPORT ---------------------------#
+bank_raw = pd.read_csv("bill_authentication.csv")
+
+# get dimensions of the dataframe
+bank_raw.shape
+
+# display the top 20 records
+bank_raw.head(20)
+
+# create a copy of the dataframe
+bank_data = bank_raw.copy()
+
+# --------------------------- PHASE 2: SVM SETUP -----------------------------#
+
+# separate the dataframe between the four (4) x predictor variables from the one (1) x respons variable
+x_predict = bank_data.drop('Class', axis = 1)
+y_response = bank_data['Class']
+
+# split the data set to train, test, validate sets
+x_train, x_test, y_train, y_test = train_test_split(x_predict, y_response, test_size = 0.20)
+
+# print out shapes of the x & y train and test sets
+x_train.shape
+x_test.shape
+y_train.shape
+y_test.shape
+
+# apply the linear SVM kernel as the data classifier
+svm_classifier = SVC(kernel = 'linear')
+svm_classifier.fit(x_train, y_train)
+
+x_test_predict = svm_classifier.predict(x_test)
+x_test_predict
