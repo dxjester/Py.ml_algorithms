@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, confusion_matrix
 
 
 # --------------------------- PHASE 1: DATA IMPORT ---------------------------#
@@ -41,5 +42,9 @@ y_test.shape
 svm_classifier = SVC(kernel = 'linear')
 svm_classifier.fit(x_train, y_train)
 
-x_test_predict = svm_classifier.predict(x_test)
-x_test_predict
+# create the predictor variables
+y_pred = svm_classifier.predict(x_test)
+y_pred
+
+print(confusion_matrix(y_test,y_pred))
+print(classification_report(y_test,y_pred))
