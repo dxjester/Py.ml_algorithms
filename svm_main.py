@@ -12,6 +12,9 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 
 # --------------------------- PHASE 1: DATA IMPORT ---------------------------#
+
+
+# 1.a: Import the bank data set ----------------------------------------------#
 bank_raw = pd.read_csv("bill_authentication.csv")
 
 # get dimensions of the dataframe
@@ -22,6 +25,20 @@ bank_raw.head(20)
 
 # create a copy of the dataframe
 bank_data = bank_raw.copy()
+
+
+
+# 1.b: Import the iris data set ----------------------------------------------#
+# import IRIS data set
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+
+# create column names and consolidate in a list
+col_names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class']
+
+iris_data = pd.read_csv(url, name=col_names) # Read dataset to pandas dataframe
+
+
+
 
 # --------------------------- PHASE 2: SVM SETUP -----------------------------#
 
