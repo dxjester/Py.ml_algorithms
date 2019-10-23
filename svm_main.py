@@ -13,7 +13,6 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 # --------------------------- PHASE 1: DATA IMPORT ---------------------------#
 
-
 # 1.a: Import the bank data set ----------------------------------------------#
 bank_raw = pd.read_csv("bill_authentication.csv")
 
@@ -25,7 +24,6 @@ bank_raw.head(20)
 
 # create a copy of the dataframe
 bank_data = bank_raw.copy()
-
 
 
 # 1.b: Import the iris data set ----------------------------------------------#
@@ -42,26 +40,53 @@ iris_data = pd.read_csv(url, name=col_names) # Read dataset to pandas dataframe
 
 # --------------------------- PHASE 2: SVM SETUP -----------------------------#
 
+# 2.a: bank data SVM set up --------------------------------------------------#
 # separate the dataframe between the four (4) x predictor variables from the one (1) x respons variable
-x_predict = bank_data.drop('Class', axis = 1)
-y_response = bank_data['Class']
+x_predict_bank = bank_data.drop('Class', axis = 1)
+y_response_bank = bank_data['Class']
 
 # split the data set to train, test, validate sets
-x_train, x_test, y_train, y_test = train_test_split(x_predict, y_response, test_size = 0.20)
+x_train_bank, x_test_bank, y_train_bank, y_test_bank = train_test_split(x_predict_bank, y_response_bank, test_size = 0.20)
 
 # print out shapes of the x & y train and test sets
-x_train.shape
-x_test.shape
-y_train.shape
-y_test.shape
+x_train_bank.shape
+x_test_bank.shape
+y_train_bank.shape
+y_test_bank.shape
 
 # apply the linear SVM kernel as the data classifier
 svm_classifier = SVC(kernel = 'linear')
-svm_classifier.fit(x_train, y_train)
+svm_classifier.fit(x_train_bank, y_train_bank)
 
 # create the predictor variables
-y_pred = svm_classifier.predict(x_test)
-y_pred
+y_pred_bank = svm_classifier.predict(x_test_bank)
+y_pred_bank
 
-print(confusion_matrix(y_test,y_pred))
-print(classification_report(y_test,y_pred))
+print(confusion_matrix(y_test_bank,y_pred_bank))
+print(classification_report(y_test_bank,y_pred_bank))
+
+# 2.b: iris data SVM set up --------------------------------------------------#
+
+# separate the dataframe between the four (4) x predictor variables from the one (1) x respons variable
+x_predict_iris = iris_data.drop('Class', axis = 1)
+y_response_iris = iris_data['Class']
+
+# split the data set to train, test, validate sets
+x_train_iris, x_test_iris, y_train_iris, y_test_iris = train_test_split(x_predict_iris, y_response_iris, test_size = 0.20)
+
+# print out shapes of the x & y train and test sets
+x_train_iris.shape
+x_test_iris.shape
+y_train_iris.shape
+y_test_iris.shape
+
+# apply the linear SVM kernel as the data classifier
+svm_classifier = SVC(kernel = 'linear')
+svm_classifier.fit(x_train_iris, y_train_iris)
+
+# create the predictor variables
+y_pred_iris = svm_classifier.predict(x_test_iris)
+y_pred_iris
+
+print(confusion_matrix(y_test_iris,y_pred_iris))
+print(classification_report(y_test_iris,y_pred_iris))
