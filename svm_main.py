@@ -25,6 +25,9 @@ bank_raw.head(20)
 # create a copy of the dataframe
 bank_data = bank_raw.copy()
 
+# display initial findings
+bank_data.shape
+bank_data.describe()
 
 # 1.b: Import the iris data set ----------------------------------------------#
 # import IRIS data set
@@ -33,9 +36,18 @@ url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
 # create column names and consolidate in a list
 col_names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class']
 
-iris_data = pd.read_csv(url, name=col_names) # Read dataset to pandas dataframe
+# read in the csv file to a pandas dataframe
+iris_raw = pd.read_csv(url, names=col_names) 
 
+# display the top 20 records
+iris_raw.head(20)
 
+# create a copy of the iris dataframe
+iris_data = iris_raw.copy()
+
+# display initial findings
+iris_data.shape
+iris_data.describe()
 
 
 # --------------------------- PHASE 2: SVM SETUP -----------------------------#
