@@ -6,10 +6,13 @@
 
 import pandas as pd
 import numpy as np
+
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # --------------------------- PHASE 1: DATA IMPORT ---------------------------#
 
@@ -49,10 +52,14 @@ iris_data = iris_raw.copy()
 iris_data.shape
 iris_data.describe()
 
+# --------------------------- PHASE 2: DATA PLOT -----------------------------#
+# 2.a: Bank Data Plotting ----------------------------------------------------#
 
-# --------------------------- PHASE 2: SVM SETUP -----------------------------#
+# 2.b: Iris Data Plotting ----------------------------------------------------#
 
-# 2.a: bank data SVM set up --------------------------------------------------#
+# --------------------------- PHASE 3: SVM SETUP -----------------------------#
+
+# 3.a: bank data SVM set up --------------------------------------------------#
 # separate the dataframe between the four (4) x predictor variables from the one (1) x respons variable
 x_predict_bank = bank_data.drop('Class', axis = 1)
 y_response_bank = bank_data['Class']
@@ -77,7 +84,7 @@ y_pred_bank
 print(confusion_matrix(y_test_bank,y_pred_bank))
 print(classification_report(y_test_bank,y_pred_bank))
 
-# 2.b: iris data SVM set up --------------------------------------------------#
+# 3.b: iris data SVM set up --------------------------------------------------#
 
 # separate the dataframe between the four (4) x predictor variables from the one (1) x respons variable
 x_predict_iris = iris_data.drop('Class', axis = 1)
