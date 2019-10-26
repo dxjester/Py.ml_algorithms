@@ -16,14 +16,13 @@ from sklearn.metrics import classification_report, confusion_matrix
 # 1.a: Import the bank data set ----------------------------------------------#
 bank_raw = pd.read_csv("bill_authentication.csv")
 
-# get dimensions of the dataframe
-bank_raw.shape
+bank_raw.columns # print column names
 
-# display the top 20 records
-bank_raw.head(20)
+bank_raw.shape # get dimensions of the dataframe
 
-# create a copy of the dataframe
-bank_data = bank_raw.copy()
+bank_raw.head(20) # display the top 20 records
+
+bank_data = bank_raw.copy() # create a copy of the dataframe
 
 # display initial findings
 bank_data.shape
