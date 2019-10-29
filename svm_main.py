@@ -55,10 +55,10 @@ iris_data.describe()
 
 # --------------------------- PHASE 2: DATA PLOT -----------------------------#
 # 2.a: Bank Data Plotting ----------------------------------------------------#
-bank_pairplot = sns.pairplot(bank_data)
+bank_pairplot = sns.pairplot(bank_data, hue="Class")
 
 # 2.b: Iris Data Plotting ----------------------------------------------------#
-iris_pairplot = sns.pairplot(iris_raw)
+iris_pairplot = sns.pairplot(iris_raw, hue="Class")
 
 
 
