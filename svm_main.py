@@ -11,8 +11,9 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 
+
 import matplotlib.pyplot as plt
-import seaborn as sns
+import seaborn as sns; sns.set(style="ticks", color_codes=True)
 
 # --------------------------- PHASE 1: DATA IMPORT ---------------------------#
 
@@ -51,10 +52,15 @@ iris_data = iris_raw.copy()
 iris_data.shape
 iris_data.describe()
 
+
 # --------------------------- PHASE 2: DATA PLOT -----------------------------#
 # 2.a: Bank Data Plotting ----------------------------------------------------#
+bank_pairplot = sns.pairplot(bank_data)
 
 # 2.b: Iris Data Plotting ----------------------------------------------------#
+iris_pairplot = sns.pairplot(iris_raw)
+
+
 
 # --------------------------- PHASE 3: SVM SETUP -----------------------------#
 
