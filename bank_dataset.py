@@ -24,6 +24,8 @@ bank_raw.shape # get dimensions of the dataframe
 
 bank_raw.head(20) # display the top 20 records
 
+bank_raw['Class'].unique() # only two Response values [0,1]
+
 bank_data = bank_raw.copy() # create a copy of the dataframe
 
 # display initial findings
@@ -32,11 +34,8 @@ bank_data.describe()
 
 
 
-
-
 # --------------------------- PHASE 2: DATA PLOT -----------------------------#
 bank_pairplot = sns.pairplot(bank_data, hue="Class")
-
 
 
 
