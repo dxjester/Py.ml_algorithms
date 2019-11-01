@@ -54,14 +54,24 @@ x_test_bank.shape
 y_train_bank.shape
 y_test_bank.shape
 
-# apply the linear SVM kernel as the data classifier
-svm_classifier = SVC(kernel = 'linear')
-svm_classifier.fit(x_train_bank, y_train_bank)
+# apply the LINEAR SVM kernel as the data classifier
+svm_classifier_linear = SVC(kernel = 'linear')
+svm_classifier_linear.fit(x_train_bank, y_train_bank)
 
 # create the predictor variables
-y_pred_bank = svm_classifier.predict(x_test_bank)
-y_pred_bank
+y_pred_linear_bank = svm_classifier_linear.predict(x_test_bank)
+y_pred_linear_bank
 
-print(confusion_matrix(y_test_bank,y_pred_bank))
-print(classification_report(y_test_bank,y_pred_bank))
+print(confusion_matrix(y_test_bank,y_pred_linear_bank))
+print(classification_report(y_test_bank,y_pred_linear_bank))
+
+# apply the POLYNOMIAL SVM kernel as the data classifier
+svm_classifier_poly = SVC(kernel = 'poly', degree=8)
+svm_classifier_poly.fit(x_train_bank,y_train_bank)
+
+y_pred_poly_bank = svm_classifier_poly.predict(x_test_bank)
+y_pred_poly_bank
+
+print(confusion_matrix(y_test_bank,y_pred_poly_bank))
+print(classification_report(y_test_bank,y_pred_poly_bank))
 
