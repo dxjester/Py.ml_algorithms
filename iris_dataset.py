@@ -64,13 +64,27 @@ x_test_iris.shape
 y_train_iris.shape
 y_test_iris.shape
 
-# apply the linear SVM kernel as the data classifier
-svm_classifier = SVC(kernel = 'linear')
-svm_classifier.fit(x_train_iris, y_train_iris)
+# apply the LINEAR SVM kernel as the data classifier
+svm_classifier_linear = SVC(kernel = 'linear')
+svm_classifier_linear.fit(x_train_iris, y_train_iris)
 
 # create the predictor variables
-y_pred_iris = svm_classifier.predict(x_test_iris)
-y_pred_iris
+y_pred_linear_iris = svm_classifier_linear.predict(x_test_iris)
+y_pred_linear_iris
 
-print(confusion_matrix(y_test_iris,y_pred_iris))
-print(classification_report(y_test_iris,y_pred_iris))
+print(confusion_matrix(y_test_iris,y_pred_linear__iris))
+print(classification_report(y_test_iris,y_pred_linear_iris))
+
+# apply the POLYNOMIAL SVM kernel as the data classifier
+svm_classifier_poly = SVC(kernel = 'poly', degree=8)
+svm_classifier_poly.fit(x_train_iris,y_train_iris)
+
+y_pred_poly_iris = svm_classifier_poly.predict(x_test_iris)
+y_pred_poly_iris
+
+print(confusion_matrix(y_test_iris,y_pred_poly_iris))
+print(classification_report(y_test_iris,y_pred_poly_iris))
+
+
+
+
