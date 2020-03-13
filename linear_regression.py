@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-FILENAME: nn_back_propagation.py
+FILENAME: linear_regression.py
 PROJECT: Machine Learning Algorithms
 DATE CREATED: 13-Mar-20
 DATE UPDATED: 13-Mar-20
 VERSION: 1.0
 """
+# --------------- PHASE 1: Environment Setup -------------------#
 # import the necessary libraries
 import numpy as np
 from sklearn.linear_model import LinearRegression
@@ -21,6 +22,8 @@ print(y)
 plt.scatter(x, y, color= 'purple')
 plt.show()
 
+
+# --------------- PHASE 2: Build the Model -------------------#
 # build the linear regression model
 linear_mod = LinearRegression()
 
@@ -41,6 +44,7 @@ print('Slope: ', model.coef_)
 y_pred = model.predict(x)
 print('Predicted Response: ', y_pred)
 
+# --------------- PHASE 3: Evaluate the Model -------------------#
 # Test set value
 x_test = np.arange(15).reshape((-1,1))
 print(x_test)
