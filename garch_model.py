@@ -17,7 +17,7 @@ data = [gauss(0, i*0.01) for i in range(0,100)]
 
 # split into train/test sets
 n_tests = 10
-train, test = data[:-n_tests,] data[-n_tests:]
+train, test = data[:-n_tests,]
 
 # define the model
 a_model = arch_model(train, mean = 'Zero', vol = 'ARCH', p = 15)
